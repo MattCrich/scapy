@@ -281,8 +281,8 @@ class PRF(object):
 
             if self.tls_version <= 0x0302:
                 s1 = _tls_hash_algs["MD5"]().digest(handshake_msg)
-                s2 = _tls_hash_algs["SHA"]().digest(handshake_msg)
-                verify_data = self.prf(master_secret, label, s1 + s2, 12)
+                #s2 = _tls_hash_algs["SHA"]().digest(handshake_msg)
+                verify_data = self.prf(master_secret, label, s1 , 12)
             else:
                 if self.hash_name in ["MD5", "SHA"]:
                     h = _tls_hash_algs["SHA256"]()
